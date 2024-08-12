@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title><?php echo $pageTitle; ?></title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="dashboard.php">Movie Review App</a>
+
+<nav class="" style="width: 100%;">
+    <a class="navbar-brand" href="home.php">Movie Review App</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">Home</a>
+                <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="profile.php">Profile</a>
@@ -33,4 +25,3 @@
         </form>
     </div>
 </nav>
-<div class="container">

@@ -1,0 +1,46 @@
+:root {
+    --black: rgba(0, 0, 0, 1);
+    --soft-grey: rgba(232, 232, 232, 1);
+    --white: rgba(255, 255, 255, 1);
+    --red: rgba(255, 255, 255, 1);
+    --grey: rgba(68, 67, 67, 1);
+    --blue: rgba(255, 255, 255, 1);
+    --yellow: rgba(255, 255, 0, 1);
+    --heading-2-font-family: "Saira Condensed", Helvetica;
+    --heading-2-font-weight: 700;
+    --heading-2-font-size: 50px;
+    --heading-2-letter-spacing: 0px;
+    --heading-2-line-height: 110.00000238418579%;
+    --heading-2-font-style: normal;
+    --body-text-font-family: "Inter", Helvetica;
+    --body-text-font-weight: 400;
+    --body-text-font-size: 16px;
+    --body-text-letter-spacing: 0px;
+    --body-text-line-height: 170.00000476837158%;
+    --body-text-font-style: normal;
+    --menu-font-family: "Saira Condensed", Helvetica;
+    --menu-font-weight: 700;
+    --menu-font-size: 16px;
+    --menu-letter-spacing: 0px;
+    --menu-line-height: 110.00000238418579%;
+    --menu-font-style: normal;
+    --subtext-font-family: "Inter", Helvetica;
+    --subtext-font-weight: 400;
+    --subtext-font-size: 12px;
+    --subtext-letter-spacing: 0px;
+    --subtext-line-height: 170.00000476837158%;
+    --subtext-font-style: normal;
+    --subtext-1-font-family: "Inter", Helvetica;
+    --subtext-1-font-weight: 600;
+    --subtext-1-font-size: 22px;
+    --subtext-1-letter-spacing: 0px;
+    --subtext-1-line-height: 110.00000238418579%;
+    --subtext-1-font-style: normal;
+    --subtext-2-font-family: "Saira Condensed", Helvetica;
+    --subtext-2-font-weight: 700;
+    --subtext-2-font-size: 28px;
+    --subtext-2-letter-spacing: 0px;
+    --subtext-2-line-height: 110.00000238418579%;
+    --subtext-2-font-style: normal;
+  }
+  

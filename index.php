@@ -1,134 +1,169 @@
+<?php
+session_start();
+require 'db.php';
+
+
+$pageTitle = "Dashboard";
+
+// Fetch random movies
+$randomMovies = $conn->query("SELECT * FROM movies")->fetch_all(MYSQLI_ASSOC);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Rateflix</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Rateflix movie Review</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira+Condensed:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/styleguide.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-    <!-- Header -->
-    <header class="bg-dark text-white p-3">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="index.php" class="navbar-brand">
-                <img src="images/mausam.png" alt="Rateflix" style="height: 40px;">
-            </a>
-            <nav>
-                <a href="index.php" class="text-white mx-2">Home</a>
-                <a href="movies.php" class="text-white mx-2">Movies</a>
-                <a href="favorites.php" class="text-white mx-2">Favorites</a>
-                <a href="login.php" class="text-white mx-2">Login</a>
-                <a href="register.php" class="text-white btn btn-primary ml-2">Sign Up</a>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Main Slider -->
-    <div class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/mausam.png" class="d-block w-100" alt="Deadpool 3">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>July 26th - Deadpool 3</h5>
-                    <p>Fantasy, Action</p>
-                    <a href="#" class="btn btn-danger">Watch Trailer</a>
-                    <a href="#" class="btn btn-light">Add to Favourites</a>
-                    <a href="#" class="btn btn-secondary">Share</a>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="img/logo.png" alt="Logo" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="login.php" class="btn btn-primary">Login</a>
+          </li>
+          <li class="nav-item">
+            <a href="register.php" class="btn btn-danger">Signup</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- Movies Section -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4">Movies</h2>
-        <div class="d-flex justify-content-between mb-4">
-            <div>#Popular</div>
-            <div>#Coming Soon</div>
-            <div>#Top Rated</div>
-            <div>#Most Reviewed</div>
-            <div><a href="movies.php">View All ></a></div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <img src="mausam.png" class="img-fluid" alt="Deadpool">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="Avatar 3">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="Kingdom of the Planet of the Apes">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="Fall Guy">
-            </div>
-        </div>
-    </section>
+  <!-- Carousel -->
+  <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+    <ol class="carousel-indicators">
+      <li data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="0" class="active"></li>
+      <li data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="1"></li>
+      <li data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/banner_1.png" class="d-block w-100 d-sm-block" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner_2.png" class="d-block w-100 d-sm-block" alt="..." />
+      </div>
+      <div class="carousel-item">
+        <img src="img/banner_2.png" class="d-block w-100 d-sm-block" alt="..." />
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Showcase -->
+  <section class="banner">
+    <div class="banner-content">
+      <button class="btn btn-primary my-2">Fantasy</button>
+      <button class="btn btn-danger my-2">Action</button>
+      <h1>July 26th</h1>
+      <h1>
+        <span class="text-warning">Deadpool </span>
+        <span class="text-danger">3</span>
+      </h1>
+    </div>
+  </section>
+  <div class="search-form">
+    <form class="form" action="search.php" method="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="query" required>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
 
-    <!-- TV Shows Section -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4">TV Shows</h2>
-        <div class="d-flex justify-content-between mb-4">
-            <div>#Popular</div>
-            <div>#Coming Soon</div>
-            <div>#Top Rated</div>
-            <div>#Most Reviewed</div>
-            <div><a href="tvshows.php">View All ></a></div>
+  <div class="row">
+    <?php foreach ($randomMovies as $movie) : ?>
+      <div class="card mb-4">
+        <?php
+        $imagePath = 'images/' . $movie['image'];
+        if (file_exists($imagePath)) {
+          echo '<img src="' . $imagePath . '" class="card-img-top" alt="' . $movie['title'] . '">';
+        } else {
+          echo '<img src="images/placeholder.jpg" class="card-img-top" alt="Placeholder">';
+        }
+        ?>
+        <div class="card-body">
+          <h3 class="card-title"><?php echo $movie['title']; ?></h3>
+          <p class="card-text"><?php echo substr($movie['description'], 0, 100); ?>...</p>
+          <a href="movie_detail.php?id=<?php echo $movie['id']; ?>" class="btn btn-primary">View Details</a>
         </div>
-        <div class="row">
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="House of the Dragon">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="The Boys">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="Bridgerton">
-            </div>
-            <div class="col-md-3">
-                <img src="images/mausam.png" class="img-fluid" alt="Stranger Things">
-            </div>
-        </div>
-    </section>
+      </div>
 
-    <!-- In Theatre Section -->
-    <section class="container my-5">
-        <h2 class="text-center mb-4">In Theatre</h2>
-        <div class="row">
-            <div class="col-md-8">
-                <img src="images/mausam.png" class="img-fluid" alt="Smile 2">
-                <div class="mt-2">
-                    <a href="#" class="btn btn-primary">Watch the Trailer</a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Stranger Things 4 Trailer</a>
-                    <a href="#" class="list-group-item list-group-item-action">Stranger Things 4 Trailer</a>
-                    <a href="#" class="list-group-item list-group-item-action">Stranger Things 4 Trailer</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <?php endforeach; ?>
+  </div>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white p-3">
-        <div class="container d-flex justify-content-between">
-            <div>
-                <a href="index.php" class="text-white mx-2">Home</a>
-                <a href="movies.php" class="text-white mx-2">Movies</a>
-                <a href="favorites.php" class="text-white mx-2">Favorites</a>
-                <a href="login.php" class="text-white mx-2">Login</a>
-            </div>
-            <div class="text-white">
-                <p>&copy; 2024 All Rights Reserved. Rateflix</p>
-            </div>
-        </div>
-    </footer>
+  <footer>
+    <div class="wrapper">
+      <div class="links-container">
+        <div class="links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li>
+              <a href="#">Login</a>
+            </li>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+            <li>
+              <a href="#">Movies</a>
+            </li>
+
+            <li>
+              <a href="#">Home</a>
+            </li>
+
+            <li>
+              <a href="#">Favourites</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="#" class="btn light">Sign Up</a>
+          </li>
+
+
+        </div>
+
+        <div class="links">
+          <ul>
+            <li>
+              <a href="#">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#">Terms & Conditions</a>
+            </li>
+          </ul>
+
+        </div>
+        <p class="copyright"> © Copyright 2024. All Rights Reserved. Rateflix </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
